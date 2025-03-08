@@ -1,0 +1,28 @@
+# Set the default shell with strict error handling
+set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+
+# Default box name
+box := "almalinux9"
+
+# Set the default recipe to build
+default: build
+
+# Build the box locally (skip vagrant cloud)
+build: clean init
+    packer build --except=vagrant-registry -var-file={{box}}.pkr.hcl almalinux.pkr.hcl
+
+# Clean build artifacts
+clean:
+    rm -fr output-almalinux
+
+# Initialize the packer environment
+init:
+    packer init -var-file={{box}}.pkr.hcl almalinux.pkr.hcl
+
+# Release the box to vagrant cloud
+release: clean init
+    packer build -var-file={{box}}.pkr.hcl almalinux.pkr.hcl
+
+# Validate the packer configuration
+validate:
+    packer validate -var-file={{box}}.pkr.hcl almalinux.pkr.hcl

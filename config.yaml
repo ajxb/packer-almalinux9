@@ -1,0 +1,15 @@
+# It's likely that you'll need to update the ip setting to be suitable for your network.
+# The address should be selected from the private IP address space as documented in
+# https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
+# You will need to make sure that the selected address isn't already in use and that
+# your VPN doesn't try to route traffic for the range under which the ip falls.
+machine:
+  memory: 4096
+  cpus: 4
+  ip: 172.16.11.11
+  hostname:
+    name: generated
+    postfix: ans01
+    domain: local
+  aliases:
+    - ansible.local
