@@ -12,7 +12,7 @@ set -euo pipefail
 ###############################################################################
 install_dependencies() {
   echo 'Installing system dependencies'
-  yum install -y jq python3 python3.12 python3.12-pip &> /dev/null
+  dnf install -y jq python3 python3.12 python3.12-pip &> /dev/null
 }
 
 main() {
