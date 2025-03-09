@@ -11,10 +11,6 @@ echo "==> Removing temporary files used to build box"
 rm -rf /tmp/*
 rm -rf /var/tmp/*
 
-# Clean up RPM DB
-echo "==> Clean up RPM DB"
-rm -f /var/lib/rpm/rpmdb.sqlite*
-
 # Clean logs
 echo "==> Cleaning logs"
 find /var/log -type f -exec rm -f {} \;
