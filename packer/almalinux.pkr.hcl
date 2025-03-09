@@ -71,14 +71,8 @@ build {
   }
 
   post-processors {
-    post-processor "vagrant" {
-      compression_level = 9
-      keep_input_artifact = true
-      output = "output-almalinux/{{.BuildName}}_{{.Provider}}_{{.Architecture}}.box"
-      provider_override = "vmware"
-    }
-
     post-processor "vagrant-registry" {
+      architecture        = "arm64"
       box_tag             = "${var.box_tag}"
       no_release          = true
       version             = "${local.version}"
